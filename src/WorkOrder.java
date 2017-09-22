@@ -5,6 +5,13 @@ public class WorkOrder {
     Status status;
     static int numWOCreated;
 
+// if creating unique id's that don't get overwritten on restart, this would be part of code
+//    static int getWOCreated() {
+//        if (numWOCreated == -1) {
+//            // do the work of figuring out starting number
+//        }
+//    }
+
     public WorkOrder() {
     }
 

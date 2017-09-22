@@ -19,8 +19,7 @@ public class Creator {
                 System.out.println("Enter Work Order Sender's Name: ");
                 String senderNameEntry = scanner.nextLine();
 
-
-
+                // instantiate new work order
                 WorkOrder newWorkOrder = new WorkOrder();
                 WorkOrder.numWOCreated++;
                 newWorkOrder.setId(WorkOrder.numWOCreated);
@@ -28,7 +27,8 @@ public class Creator {
                 newWorkOrder.setSenderName(senderNameEntry);
                 newWorkOrder.setStatus(Status.INITIAL);
 
-                System.out.println("THE NAME IS: " + newWorkOrder.getId() + ".json");
+                // create new JSON file with WO id as name
+                System.out.println("THE FILE NAME IS: " + newWorkOrder.getId() + ".json");
                 File fileForJson = new File(newWorkOrder.getId() + ".json");
                 FileWriter fileWriter = new FileWriter(fileForJson);
 
@@ -36,7 +36,6 @@ public class Creator {
                 String json = mapper.writeValueAsString(newWorkOrder);
 
                 fileWriter.write(json);
-
                 fileWriter.close();
             }
             catch (IOException ex) {
@@ -45,22 +44,6 @@ public class Creator {
         }
     }
 
-//    public void workOrderCounter() {
-//        try {
-//            File fileForJson = new File("lastId.json");
-//            FileWriter fileWriter = new FileWriter(fileForJson);
-//
-//            ObjectMapper mapper = new ObjectMapper();
-//            String json = mapper.write();
-//
-//            fileWriter.write(json);
-//
-//            fileWriter.close();
-//        }
-//        catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
 
     public static void main(String[] args) {
 
