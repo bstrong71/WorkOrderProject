@@ -3,7 +3,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -29,10 +28,6 @@ public class Creator {
                 newWorkOrder.setDescription(descriptionEntry);
                 newWorkOrder.setSenderName(senderNameEntry);
                 newWorkOrder.setStatus(Status.INITIAL);
-
-                // add new WO to Set
-                Set<WorkOrder> workOrderSet = new HashSet<>();
-                workOrderSet.add(newWorkOrder);
 
                 // create new JSON file with WO id as name
                 System.out.println("THE FILE NAME IS: " + newWorkOrder.getId() + ".json");
