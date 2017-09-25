@@ -1,12 +1,40 @@
 public class WorkOrder {
-    int id;
-    String description;
-    String senderName;
-    Status status;
-    static int numWOCreated;
+    private int id;
+    private String description;
+    private String senderName;
+    private Status status;
+    private static int numWOCreated = 0;
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        WorkOrder workOrder = (WorkOrder) o;
+
+        return id == workOrder.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 
     public WorkOrder() {
+        this.id = getAndIncrNumWOCreated();
+
+    }
+
+    public WorkOrder(String description, String senderName, Status status) {
+        this.id = getAndIncrNumWOCreated();
+        this.description = description;
+        this.senderName = senderName;
+        this.status = status;
+    }
+
+    private static int getAndIncrNumWOCreated() {
+        return numWOCreated ++;
     }
 
     public int getId() {
@@ -41,11 +69,4 @@ public class WorkOrder {
         this.status = status;
     }
 
-    public static int getNumWOCreated() {
-        return numWOCreated;
-    }
-
-    public static void setNumWOCreated(int numWOCreated) {
-        WorkOrder.numWOCreated = numWOCreated;
-    }
 }

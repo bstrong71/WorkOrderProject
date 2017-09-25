@@ -1,11 +1,8 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Creator {
     public void createWorkOrders() {
@@ -22,12 +19,7 @@ public class Creator {
                 String senderNameEntry = scanner.nextLine();
 
                 // instantiate new work order
-                WorkOrder newWorkOrder = new WorkOrder();
-                WorkOrder.numWOCreated++;
-                newWorkOrder.setId(WorkOrder.numWOCreated);
-                newWorkOrder.setDescription(descriptionEntry);
-                newWorkOrder.setSenderName(senderNameEntry);
-                newWorkOrder.setStatus(Status.INITIAL);
+                WorkOrder newWorkOrder = new WorkOrder(descriptionEntry, senderNameEntry, Status.INITIAL);
 
                 // create new JSON file with WO id as name
                 System.out.println("THE FILE NAME IS: " + newWorkOrder.getId() + ".json");
@@ -45,7 +37,6 @@ public class Creator {
             }
         }
     }
-
 
     public static void main(String[] args) {
 
